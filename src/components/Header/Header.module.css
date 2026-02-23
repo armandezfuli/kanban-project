@@ -1,0 +1,26 @@
+.header {
+    background: var(--surface-3);
+    padding: var(--size-3);
+    margin-block-end: var(--size-6);
+    box-shadow: var(--shadow-1);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--lime-5);
+}
+
+.brand {
+    font-family: "Bpmf Iansui", cursive;
+    font-size: clamp(var(--font-size-1), 0.6vw + var(--font-size-2), var(--font-size-5));
+    font-weight: var(--font-weight-9);
+}
+
+.user {
+    font-family: "Vazirmatn", sans-serif;
+    font-size: var(--font-size-4);
+    font-weight: var(--font-weight-5);
+    color: var(--blue-6);
+}

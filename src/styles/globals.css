@@ -1,0 +1,32 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Bpmf+Iansui&family=Vazirmatn:wght@100..900&display=swap");
+
+/* Open Props */
+@import "open-props/style";
+@import "open-props/sizes";
+@import "open-props/easings";
+@import "open-props/animations";
+@import "open-props/gradients";
+@import "open-props/indigo";
+
+/* Normalize */
+@import "open-props/normalize";
+@import "open-props/normalize/dark";
+
+/* Utilities */
+@import "./utilities.css";
+
+/* Base styles */
+
+:root {
+    --surface-1: var(--gray-12);
+    --surface-2: var(--gray-11);
+    --surface-3: var(--gray-10);
+    --surface-4: var(--gray-9);
+}
+
+body {
+    font-family: "Vazirmatn", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}

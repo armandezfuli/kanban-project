@@ -1,0 +1,5 @@
+.layout {
+    width: min(100% - var(--size-4), 1100px);
+    margin-inline: auto;
+    padding-block: var(--size-4);
+}
