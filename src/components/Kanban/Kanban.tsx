@@ -19,71 +19,17 @@ export function Kanban() {
                 <div className={styles.column}>
                     <div className={styles["column-title"]}>To Do</div>
                     <div className={styles.cards}>
-                        <div className={styles.card}>Develop Kanban project 1 Develop Kanban project 1</div>
-                        <div className={styles.card}>Develop Kanban project 2</div>
-                        <div className={styles.card}>Develop Kanban project 3</div>
-                        <div className={styles.card}>Develop Kanban project 3</div>
                         <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project end</div>
                     </div>
                 </div>
                 <div className={styles.column}>
-                <div className={styles["column-title"]}>Doing</div>
+                    <div className={styles["column-title"]}>Doing</div>
                     <div className={styles.cards}>
-                        <div className={styles.card}>Develop Kanban project 1</div>
-                        <div className={styles.card}>Develop Kanban project 2</div>
-                        <div className={styles.card}>Develop Kanban project 3</div>
-                        <div className={styles.card}>Develop Kanban project 3</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project end</div>
                     </div>
                 </div>
                 <div className={styles.column}>
-                <div className={styles["column-title"]}>Done</div>
+                    <div className={styles["column-title"]}>Done</div>
                     <div className={styles.cards}>
-                        <div className={styles.card}>Develop Kanban project 1</div>
-                        <div className={styles.card}>Develop Kanban project 2</div>
-                        <div className={styles.card}>Develop Kanban project 3</div>
-                        <div className={styles.card}>Develop Kanban project 3</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project</div>
-                        <div className={styles.card}>Develop Kanban project end</div>
                     </div>
                 </div>
             </section>

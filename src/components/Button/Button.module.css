@@ -41,12 +41,4 @@
 
     padding-inline: var(--size-3);
     padding-block: var(--size-1);
-
-    color: var(--blue-6);
-    border: var(--border-size-2) solid var(--blue-6);
-
-    &:hover {
-        color: var(--blue-4);
-        border-color: var(--blue-4);
-    }
 }
