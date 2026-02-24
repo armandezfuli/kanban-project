@@ -10,9 +10,7 @@
     padding-inline: var(--size-3);
     padding-block: var(--size-1);
 
-    /* color: var(--blue-6); */
     color: var(--lime-8);
-    /* border: var(--border-size-2) solid var(--blue-6); */
     border: var(--border-size-2) solid var(--lime-8);
     background: transparent;
     border-radius: var(--radius-3);
@@ -20,9 +18,7 @@
     transition: 150ms;
 
     &:hover {
-        /* color: var(--blue-4); */
         color: var(--lime-6);
-        /* border-color: var(--blue-4); */
         border-color: var(--lime-6);
     }
     @media (max-width: 768px) {
@@ -46,15 +42,11 @@
     padding-inline: var(--size-3);
     padding-block: var(--size-1);
 
-    /* color: var(--lime-8); */
     color: var(--blue-6);
-    /* border: var(--border-size-2) solid var(--lime-8); */
     border: var(--border-size-2) solid var(--blue-6);
 
     &:hover {
-        /* color: var(--lime-6); */
         color: var(--blue-4);
-        /* border-color: var(--lime-6); */
         border-color: var(--blue-4);
     }
 }
