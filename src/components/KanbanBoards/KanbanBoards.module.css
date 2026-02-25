@@ -1,0 +1,10 @@
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--size-3);
+    padding: var(--size-3);
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+    }
+}
