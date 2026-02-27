@@ -4,7 +4,7 @@ import { KanbanBoards } from "../KanbanBoards/KanbanBoards"
 import type { KanbanBoardModel } from "../../types/kanban"
 import { useState } from "react"
 
-type KanbanProps = {
+interface KanbanProps {
     data: KanbanBoardModel
 }
 

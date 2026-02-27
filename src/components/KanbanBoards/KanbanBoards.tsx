@@ -2,7 +2,7 @@ import { KanbanBoard } from "../KanbanBoard/KanbanBoard"
 import styles from "./KanbanBoards.module.css"
 import type { KanbanBoardModel } from "../../types/kanban"
 
-type KanbanBoardsProps = {
+interface KanbanBoardsProps {
     kanbanData: KanbanBoardModel
 }
 

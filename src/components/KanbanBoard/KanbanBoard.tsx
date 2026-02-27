@@ -1,7 +1,7 @@
 import { KanbanBoardCard } from "../KanbanBoardCard/KanbanBoardCard"
 import styles from "./KanbanBoard.module.css"
 import type { KanbanStatus, KanbanCardModel } from "../../types/kanban"
-type KanbanBoardProps = {
+interface KanbanBoardProps {
     status: KanbanStatus
     cards: KanbanCardModel[]
 }
@@ -16,7 +16,6 @@ export function KanbanBoard({ status, cards }: KanbanBoardProps) {
     return (
         <div className={styles.column}>
             <div className={styles["column-title"]}>{columnTitleMap[status]}</div>
-
             <div className={styles.cards}>
                 {cards.map((card) => (
                     <KanbanBoardCard key={card.id} card={card} />

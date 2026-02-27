@@ -1,7 +1,7 @@
 import styles from "./KanbanBoardCard.module.css"
 import type { KanbanCardModel } from "../../types/kanban"
 
-type KanbanBoardCardProps = {
+interface KanbanBoardCardProps {
     card: KanbanCardModel
 }
 

@@ -1,7 +1,7 @@
 import styles from "./KanbanHeader.module.css"
 import { Button } from "../Button/Button"
 
-type KanbanHeaderProps = {
+interface KanbanHeaderProps {
     title: string
 }
 
@@ -12,7 +12,7 @@ export function KanbanHeader({ title }: KanbanHeaderProps) {
             <div className={styles.controls}>
                 <Button>To Do</Button>
                 <Button>Doing</Button>
-                <Button disabled >Done</Button>
+                <Button disabled>Done</Button>
                 <Button variant="danger">Delete</Button>
             </div>
         </header>
