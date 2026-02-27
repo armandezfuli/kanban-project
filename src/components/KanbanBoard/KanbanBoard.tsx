@@ -4,6 +4,8 @@ import type { KanbanStatus, KanbanCardModel } from "../../types/kanban"
 interface KanbanBoardProps {
     status: KanbanStatus
     cards: KanbanCardModel[]
+    onSelectCard: (id: string) => void
+    selectedCard: string | null
 }
 
 const columnTitleMap: Record<KanbanStatus, string> = {
@@ -12,13 +14,23 @@ const columnTitleMap: Record<KanbanStatus, string> = {
     done: "Done",
 }
 
-export function KanbanBoard({ status, cards }: KanbanBoardProps) {
+export function KanbanBoard({
+    status,
+    cards,
+    onSelectCard,
+    selectedCard,
+}: KanbanBoardProps) {
     return (
         <div className={styles.column}>
             <div className={styles["column-title"]}>{columnTitleMap[status]}</div>
             <div className={styles.cards}>
                 {cards.map((card) => (
-                    <KanbanBoardCard key={card.id} card={card} />
+                    <KanbanBoardCard
+                        key={card.id}
+                        card={card}
+                        onSelectCard={onSelectCard}
+                        isSelected={selectedCard === card.id}
+                    />
                 ))}
             </div>
         </div>
