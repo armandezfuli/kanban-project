@@ -2,7 +2,7 @@ import styles from "./Kanban.module.css"
 import { KanbanHeader } from "../KanbanHeader/KanbanHeader"
 import { KanbanBoards } from "../KanbanBoards/KanbanBoards"
 import type { KanbanBoardModel, KanbanStatus } from "../../types/kanban"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 
 interface KanbanProps {
     data: KanbanBoardModel
@@ -11,6 +11,23 @@ interface KanbanProps {
 export function Kanban({ data }: KanbanProps) {
     const [kanbanData, setKanbanData] = useState<KanbanBoardModel>(data)
     const [selectedCard, setSelectedCard] = useState<null | string>(null)
+    const kanbanRef = useRef<HTMLElement | null>(null)
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (!kanbanRef.current) return
+
+            if (!kanbanRef.current.contains(event.target as Node)) {
+                setSelectedCard(null)
+            }
+        }
+
+        document.addEventListener("click", handleClickOutside)
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside)
+        }
+    }, [])
 
     const handleSelectCard = (id: string) => {
         setSelectedCard((prev) => (prev === id ? null : id))
@@ -37,9 +54,12 @@ export function Kanban({ data }: KanbanProps) {
     }
 
     return (
-        <section className={styles.kanban}>
+        <section
+            className={styles.kanban}
+            ref={kanbanRef}
+            onClick={() => setSelectedCard(null)}>
             <KanbanHeader
-                title={kanbanData.title}
+                title={kanbanData.title}    
                 selectedCardId={selectedCard}
                 onDeleteCard={handleDeleteCard}
                 onMoveCard={handleMoveCard}

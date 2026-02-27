@@ -12,9 +12,11 @@ export function KanbanBoardCard({
     onSelectCard,
     isSelected,
 }: KanbanBoardCardProps) {
-    const handleClick = () => {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation()
         onSelectCard(card.id)
     }
+
 
     return (
         <div
