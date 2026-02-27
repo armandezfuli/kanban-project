@@ -12,7 +12,7 @@ export function KanbanHeader({ title }: KanbanHeaderProps) {
             <div className={styles.controls}>
                 <Button>To Do</Button>
                 <Button>Doing</Button>
-                <Button disabled>Done</Button>
+                <Button disabled >Done</Button>
                 <Button variant="danger">Delete</Button>
             </div>
         </header>

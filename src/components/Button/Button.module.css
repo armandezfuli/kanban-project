@@ -21,6 +21,13 @@
         color: var(--lime-6);
         border-color: var(--lime-6);
     }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
     @media (max-width: 768px) {
         font-size: var(--font-size-0);
     }

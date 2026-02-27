@@ -9,7 +9,7 @@ type KanbanProps = {
 }
 
 export function Kanban({ data }: KanbanProps) {
-    const [kanbanData, setKanbanData] = useState<KanbanBoardModel>(data)
+    const [kanbanData, _] = useState<KanbanBoardModel>(data)
 
     return (
         <section className={styles.kanban}>

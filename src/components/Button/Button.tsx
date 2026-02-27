@@ -1,14 +1,15 @@
 import { type ReactNode, type ButtonHTMLAttributes } from "react"
 import styles from "./Button.module.css"
 
-type Props = {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode
     variant?: "primary" | "danger" | "login"
-} & ButtonHTMLAttributes<HTMLButtonElement>
+}
 
-export function Button({ children, variant = "primary" }: Props) {
+export function Button({ children, variant = "primary", ...rest }: ButtonProps) {
     return (
         <button
+            {...rest}
             className={`
                 ${styles.button}
                 ${variant === "danger" ? styles.danger : ""}
