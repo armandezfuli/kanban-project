@@ -33,6 +33,8 @@ export function Kanban({ data }: KanbanProps) {
         setSelectedCard((prev) => (prev === id ? null : id))
     }
 
+    const selectedCardData = kanbanData.cards.find((card) => card.id === selectedCard)
+
     const handleDeleteCard = () => {
         if (!selectedCard) return
         setKanbanData((prev) => ({
@@ -59,10 +61,11 @@ export function Kanban({ data }: KanbanProps) {
             ref={kanbanRef}
             onClick={() => setSelectedCard(null)}>
             <KanbanHeader
-                title={kanbanData.title}    
+                title={kanbanData.title}
                 selectedCardId={selectedCard}
                 onDeleteCard={handleDeleteCard}
                 onMoveCard={handleMoveCard}
+                selectedCardStatus={selectedCardData?.status ?? null}
             />
             <KanbanBoards
                 kanbanData={kanbanData}
