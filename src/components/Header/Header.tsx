@@ -1,7 +1,8 @@
+import type { ReactNode } from "react"
 import { Button } from "../Button/Button"
 import styles from "./Header.module.css"
 
-export function Header() {
+export function Header(): ReactNode {
     return (
         <header className={styles.header}>
             <nav className={styles.nav}>

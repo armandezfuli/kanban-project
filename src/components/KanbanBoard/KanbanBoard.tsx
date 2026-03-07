@@ -1,6 +1,7 @@
 import { KanbanBoardCard } from "../KanbanBoardCard/KanbanBoardCard"
 import styles from "./KanbanBoard.module.css"
 import type { KanbanStatus, KanbanCardModel } from "../../types/kanban"
+import type { ReactNode } from "react"
 interface KanbanBoardProps {
     status: KanbanStatus
     cards: KanbanCardModel[]
@@ -19,7 +20,7 @@ export function KanbanBoard({
     cards,
     onSelectCard,
     selectedCard,
-}: KanbanBoardProps) {
+}: KanbanBoardProps): ReactNode {
     return (
         <div className={styles.column}>
             <div className={styles["column-title"]}>{columnTitleMap[status]}</div>

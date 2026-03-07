@@ -1,5 +1,6 @@
 import styles from "./KanbanBoardCard.module.css"
 import type { KanbanCardModel } from "../../types/kanban"
+import type { ReactNode } from "react"
 
 interface KanbanBoardCardProps {
     card: KanbanCardModel
@@ -11,12 +12,11 @@ export function KanbanBoardCard({
     card,
     onSelectCard,
     isSelected,
-}: KanbanBoardCardProps) {
+}: KanbanBoardCardProps): ReactNode {
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation()
         onSelectCard(card.id)
     }
-
 
     return (
         <div

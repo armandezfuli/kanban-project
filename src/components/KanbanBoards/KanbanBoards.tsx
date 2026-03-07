@@ -1,6 +1,7 @@
 import { KanbanBoard } from "../KanbanBoard/KanbanBoard"
 import styles from "./KanbanBoards.module.css"
 import type { KanbanBoardModel } from "../../types/kanban"
+import type { ReactNode } from "react"
 
 interface KanbanBoardsProps {
     kanbanData: KanbanBoardModel
@@ -12,7 +13,7 @@ export function KanbanBoards({
     kanbanData,
     onSelectCard,
     selectedCard,
-}: KanbanBoardsProps) {
+}: KanbanBoardsProps): ReactNode {
     const todoCards = kanbanData.cards.filter((c) => c.status === "todo")
     const doingCards = kanbanData.cards.filter((c) => c.status === "doing")
     const doneCards = kanbanData.cards.filter((c) => c.status === "done")

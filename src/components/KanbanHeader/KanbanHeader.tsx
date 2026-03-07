@@ -1,6 +1,7 @@
 import styles from "./KanbanHeader.module.css"
 import { Button } from "../Button/Button"
 import type { KanbanStatus } from "../../types/kanban"
+import type { ReactNode } from "react"
 
 interface KanbanHeaderProps {
     title: string
@@ -16,7 +17,7 @@ export function KanbanHeader({
     onDeleteCard,
     onMoveCard,
     selectedCardStatus,
-}: KanbanHeaderProps) {
+}: KanbanHeaderProps): ReactNode {
     return (
         <header className={styles.header}>
             <div className={styles.title}>{title}</div>

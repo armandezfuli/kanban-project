@@ -2,13 +2,13 @@ import styles from "./Kanban.module.css"
 import { KanbanHeader } from "../KanbanHeader/KanbanHeader"
 import { KanbanBoards } from "../KanbanBoards/KanbanBoards"
 import type { KanbanBoardModel, KanbanStatus } from "../../types/kanban"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, type ReactNode } from "react"
 
 interface KanbanProps {
     data: KanbanBoardModel
 }
 
-export function Kanban({ data }: KanbanProps) {
+export function Kanban({ data }: KanbanProps): ReactNode {
     const [kanbanData, setKanbanData] = useState<KanbanBoardModel>(data)
     const [selectedCard, setSelectedCard] = useState<null | string>(null)
     const kanbanRef = useRef<HTMLElement | null>(null)
@@ -22,10 +22,10 @@ export function Kanban({ data }: KanbanProps) {
             }
         }
 
-        document.addEventListener("click", handleClickOutside)
+        document.addEventListener("pointerdown", handleClickOutside)
 
         return () => {
-            document.removeEventListener("click", handleClickOutside)
+            document.removeEventListener("pointerdown", handleClickOutside)
         }
     }, [])
 
