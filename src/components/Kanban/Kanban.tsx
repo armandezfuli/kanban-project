@@ -45,7 +45,7 @@ export function Kanban({ data }: KanbanProps): ReactNode {
             cards: prev.cards.filter((c) => c.id !== selectedCard),
         }))
         setSelectedCard(null)
-    }, [])
+    }, [selectedCard])
 
     const handleMoveCard = useCallback((status: KanbanStatus) => {
         if (!selectedCard) return
