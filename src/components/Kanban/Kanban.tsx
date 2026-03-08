@@ -56,7 +56,7 @@ export function Kanban({ data }: KanbanProps): ReactNode {
                 card.id === selectedCard ? { ...card, status } : card
             ),
         }))
-    }, [])
+    }, [selectedCard])
 
     return (
         <section
