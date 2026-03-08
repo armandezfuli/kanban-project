@@ -1,7 +1,7 @@
 import { KanbanBoard } from "../KanbanBoard/KanbanBoard"
 import styles from "./KanbanBoards.module.css"
 import type { KanbanBoardModel } from "../../types/kanban"
-import type { ReactNode } from "react"
+import { useMemo, type ReactNode } from "react"
 
 interface KanbanBoardsProps {
     kanbanData: KanbanBoardModel
@@ -14,9 +14,20 @@ export function KanbanBoards({
     onSelectCard,
     selectedCard,
 }: KanbanBoardsProps): ReactNode {
-    const todoCards = kanbanData.cards.filter((c) => c.status === "todo")
-    const doingCards = kanbanData.cards.filter((c) => c.status === "doing")
-    const doneCards = kanbanData.cards.filter((c) => c.status === "done")
+    const todoCards = useMemo(
+        () => kanbanData.cards.filter((c) => c.status === "todo"),
+        [kanbanData]
+    )
+
+    const doingCards = useMemo(
+        () => kanbanData.cards.filter((c) => c.status === "doing"),
+        [kanbanData]
+    )
+
+    const doneCards = useMemo(
+        () => kanbanData.cards.filter((c) => c.status === "done"),
+        [kanbanData]
+    )
 
     return (
         <section className={styles.board}>

@@ -1,7 +1,7 @@
 import { KanbanBoardCard } from "../KanbanBoardCard/KanbanBoardCard"
 import styles from "./KanbanBoard.module.css"
 import type { KanbanStatus, KanbanCardModel } from "../../types/kanban"
-import type { ReactNode } from "react"
+import { memo, type ReactNode } from "react"
 interface KanbanBoardProps {
     status: KanbanStatus
     cards: KanbanCardModel[]
@@ -15,7 +15,7 @@ const columnTitleMap: Record<KanbanStatus, string> = {
     done: "Done",
 }
 
-export function KanbanBoard({
+const KanbanBoard = memo(function KanbanBoard({
     status,
     cards,
     onSelectCard,
@@ -36,4 +36,6 @@ export function KanbanBoard({
             </div>
         </div>
     )
-}
+})
+
+export { KanbanBoard }

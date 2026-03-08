@@ -1,6 +1,6 @@
 import styles from "./KanbanBoardCard.module.css"
 import type { KanbanCardModel } from "../../types/kanban"
-import type { ReactNode } from "react"
+import { memo, type ReactNode } from "react"
 
 interface KanbanBoardCardProps {
     card: KanbanCardModel
@@ -8,7 +8,7 @@ interface KanbanBoardCardProps {
     isSelected: boolean
 }
 
-export function KanbanBoardCard({
+const KanbanBoardCard = memo(function KanbanBoardCard({
     card,
     onSelectCard,
     isSelected,
@@ -28,4 +28,6 @@ export function KanbanBoardCard({
             {card.text}
         </div>
     )
-}
+})
+
+export { KanbanBoardCard }
