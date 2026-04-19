@@ -1,15 +1,14 @@
 import styles from "./Kanban.module.css"
 import { KanbanHeader } from "../KanbanHeader/KanbanHeader"
 import { KanbanBoards } from "../KanbanBoards/KanbanBoards"
-import type { KanbanBoardModel, KanbanStatus } from "../../types/kanban"
+import type { KanbanStatus } from "../../types/kanban"
 import { useState, useRef, useEffect, type ReactNode, useCallback, useMemo } from "react"
+import useKanban from "../../context/KanbanContext/useKanban"
 
-interface KanbanProps {
-    data: KanbanBoardModel
-}
 
-export function Kanban({ data }: KanbanProps): ReactNode {
-    const [kanbanData, setKanbanData] = useState<KanbanBoardModel>(data)
+export function Kanban(): ReactNode {
+    const { kanbanData, setKanbanData } = useKanban()
+
     const [selectedCard, setSelectedCard] = useState<null | string>(null)
     const kanbanRef = useRef<HTMLElement | null>(null)
 
@@ -47,16 +46,19 @@ export function Kanban({ data }: KanbanProps): ReactNode {
         setSelectedCard(null)
     }, [selectedCard])
 
-    const handleMoveCard = useCallback((status: KanbanStatus) => {
-        if (!selectedCard) return
+    const handleMoveCard = useCallback(
+        (status: KanbanStatus) => {
+            if (!selectedCard) return
 
-        setKanbanData((prev) => ({
-            ...prev,
-            cards: prev.cards.map((card) =>
-                card.id === selectedCard ? { ...card, status } : card
-            ),
-        }))
-    }, [selectedCard])
+            setKanbanData((prev) => ({
+                ...prev,
+                cards: prev.cards.map((card) =>
+                    card.id === selectedCard ? { ...card, status } : card
+                ),
+            }))
+        },
+        [selectedCard]
+    )
 
     return (
         <section
