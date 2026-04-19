@@ -1,9 +1,10 @@
-import { createContext } from "react"
+import { createContext, type Dispatch } from "react"
 import type { KanbanBoardModel } from "../../types/kanban"
+import type { KanbanAction } from "./KanbanProvider"
 
 interface KanbanContextValue {
     kanbanData: KanbanBoardModel
-    setKanbanData: React.Dispatch<React.SetStateAction<KanbanBoardModel>>
+    dispatch: Dispatch<KanbanAction>
 }
 
-export  const KanbanContext = createContext<KanbanContextValue | undefined>(undefined)
+export const KanbanContext = createContext<KanbanContextValue | undefined>(undefined)

@@ -1,19 +1,11 @@
 import { KanbanBoard } from "../KanbanBoard/KanbanBoard"
 import styles from "./KanbanBoards.module.css"
-import type { KanbanBoardModel } from "../../types/kanban"
 import { useMemo, type ReactNode } from "react"
+import useKanban from "../../context/KanbanContext/useKanban"
 
-interface KanbanBoardsProps {
-    kanbanData: KanbanBoardModel
-    onSelectCard: (id: string) => void
-    selectedCard: string | null
-}
+export function KanbanBoards(): ReactNode {
+    const { kanbanData } = useKanban()
 
-export function KanbanBoards({
-    kanbanData,
-    onSelectCard,
-    selectedCard,
-}: KanbanBoardsProps): ReactNode {
     const todoCards = useMemo(
         () => kanbanData.cards.filter((c) => c.status === "todo"),
         [kanbanData]
@@ -31,24 +23,9 @@ export function KanbanBoards({
 
     return (
         <section className={styles.board}>
-            <KanbanBoard
-                status="todo"
-                cards={todoCards}
-                onSelectCard={onSelectCard}
-                selectedCard={selectedCard}
-            />
-            <KanbanBoard
-                status="doing"
-                cards={doingCards}
-                onSelectCard={onSelectCard}
-                selectedCard={selectedCard}
-            />
-            <KanbanBoard
-                status="done"
-                cards={doneCards}
-                onSelectCard={onSelectCard}
-                selectedCard={selectedCard}
-            />
+            <KanbanBoard status="todo" cards={todoCards} />
+            <KanbanBoard status="doing" cards={doingCards} />
+            <KanbanBoard status="done" cards={doneCards} />
         </section>
     )
 }
