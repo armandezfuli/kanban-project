@@ -1,8 +1,11 @@
+/* ===== Base ===== */
 .button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.6rem;
     white-space: nowrap;
+    vertical-align: middle;
 
     font-size: var(--font-size-1);
     font-weight: var(--font-weight-6);
@@ -16,10 +19,15 @@
     border-radius: var(--radius-3);
 
     transition: 150ms;
+    cursor: pointer;
 
     &:hover {
         color: var(--lime-6);
         border-color: var(--lime-6);
+    }
+
+    &:active:not(:disabled) {
+        transform: scale(0.97);
     }
 
     &:disabled {
@@ -28,14 +36,35 @@
         pointer-events: none;
     }
 
+    &:focus-visible {
+        outline: 2px solid var(--lime-8);
+        outline-offset: 2px;
+    }
+
     @media (max-width: 768px) {
         font-size: var(--font-size-0);
+        padding-inline: var(--size-2); /* ← کمتر */
+        padding-block: var(--size-0); /* ← کمتر */
+        gap: 0.4rem; /* ← کمتر */
     }
 }
 
+/* ===== Text inside button ===== */
+.button .children {
+    transform: translateY(2.5px);
+}
+
+@media (max-width: 768px) {
+    .button .children {
+        transform: translateY(1px);
+    }
+}
+
+/* ===== Variants ===== */
 .danger {
     color: var(--red-10);
     border-color: var(--red-10);
+
     &:hover {
         color: var(--red-8);
         border-color: var(--red-8);
@@ -45,7 +74,66 @@
 .login {
     font-size: var(--font-size-3);
     font-weight: var(--font-weight-5);
-
     padding-inline: var(--size-3);
     padding-block: var(--size-1);
+
+    .children {
+        transform: translateY(1px);
+    }
+
+    @media (max-width: 768px) {
+        font-size: var(--font-size-1);
+        padding-inline: var(--size-2);
+        padding-block: var(--size-0);
+    }
+}
+
+.iconVariant {
+    border: none;
+    background: transparent;
+    padding: var(--size-1);
+    color: var(--red-9);
+
+    &:hover {
+        color: var(--red-8);
+        background: transparent;
+        border: none;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    &:disabled {
+        transform: none;
+    }
+
+    @media (max-width: 768px) {
+        padding: var(--size-0);
+    }
+}
+
+/* ===== Icon styles ===== */
+.icon {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+    font-size: 1.6rem;
+
+    @media (max-width: 768px) {
+        font-size: 1.4rem;
+    }
+}
+
+.iconOnly {
+    padding-inline: var(--size-2);
+    aspect-ratio: 1;
+
+    @media (max-width: 768px) {
+        padding-inline: var(--size-1);
+    }
+}
+
+.iconOnly .icon {
+    margin: 0;
 }

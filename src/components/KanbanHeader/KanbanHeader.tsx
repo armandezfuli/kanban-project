@@ -4,6 +4,7 @@ import type { ReactNode } from "react"
 import useKanban from "../../context/KanbanContext/useKanban"
 import { useSelectedId } from "../../context/KanbanContext/SelectedIdContext"
 import { Flip, toast } from "react-toastify"
+import { FiTrash2 } from "react-icons/fi"
 
 export function KanbanHeader(): ReactNode {
     const { kanbanData, dispatch } = useKanban()
@@ -53,11 +54,11 @@ export function KanbanHeader(): ReactNode {
                 </Button>
 
                 <Button
-                    variant="danger"
+                    variant="icon"
                     disabled={!selectedId}
-                    onClick={handleDeleteCard}>
-                    Delete
-                </Button>
+                    icon={<FiTrash2 />}
+                    onClick={handleDeleteCard}
+                />
             </div>
         </header>
     )
