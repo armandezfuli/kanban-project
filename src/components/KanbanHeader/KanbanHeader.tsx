@@ -3,6 +3,7 @@ import { Button } from "../Button/Button"
 import type { ReactNode } from "react"
 import useKanban from "../../context/KanbanContext/useKanban"
 import { useSelectedId } from "../../context/KanbanContext/SelectedIdContext"
+import { Flip, toast } from "react-toastify"
 
 export function KanbanHeader(): ReactNode {
     const { kanbanData, dispatch } = useKanban()
@@ -12,61 +13,49 @@ export function KanbanHeader(): ReactNode {
         ? kanbanData.cards.find((card) => card.id === selectedId)
         : undefined
 
+    const handleMoveCard = (status: "todo" | "doing" | "done", statusName: string) => {
+        if (!selectedId) return
+        dispatch({ type: "MOVE_CARD", payload: { id: selectedId, status } })
+        toast.info(`Card moved to ${statusName}`, {
+            transition: Flip,
+        })
+    }
+
+    const handleDeleteCard = () => {
+        if (!selectedId) return
+        dispatch({ type: "DELETE_CARD", payload: { id: selectedId } })
+        toast.success("Card deleted successfully", {
+            transition: Flip,
+        })
+        setSelectedId(undefined)
+    }
+
     return (
         <header className={styles.header}>
             <div className={styles.title}>{kanbanData.title}</div>
             <div className={styles.controls}>
                 <Button
                     disabled={!selectedId || selectedCard?.status === "todo"}
-                    onClick={() => {
-                        if (selectedId) {
-                            dispatch({
-                                type: "MOVE_CARD",
-                                payload: { id: selectedId, status: "todo" },
-                            })
-                        }
-                    }}>
+                    onClick={() => handleMoveCard("todo", "Todo")}>
                     To Do
                 </Button>
 
                 <Button
                     disabled={!selectedId || selectedCard?.status === "doing"}
-                    onClick={() => {
-                        if (selectedId) {
-                            dispatch({
-                                type: "MOVE_CARD",
-                                payload: { id: selectedId, status: "doing" },
-                            })
-                        }
-                    }}>
+                    onClick={() => handleMoveCard("doing", "Doing")}>
                     Doing
                 </Button>
 
                 <Button
                     disabled={!selectedId || selectedCard?.status === "done"}
-                    onClick={() => {
-                        if (selectedId) {
-                            dispatch({
-                                type: "MOVE_CARD",
-                                payload: { id: selectedId, status: "done" },
-                            })
-                        }
-                    }}>
+                    onClick={() => handleMoveCard("done", "Done")}>
                     Done
                 </Button>
 
                 <Button
                     variant="danger"
                     disabled={!selectedId}
-                    onClick={() => {
-                        if (selectedId) {
-                            dispatch({
-                                type: "DELETE_CARD",
-                                payload: { id: selectedId },
-                            })
-                            setSelectedId(undefined)
-                        }
-                    }}>
+                    onClick={handleDeleteCard}>
                     Delete
                 </Button>
             </div>

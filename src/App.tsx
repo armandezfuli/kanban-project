@@ -5,6 +5,7 @@ import { data } from "./data/data"
 import { KanbanProvider } from "./context/KanbanContext/KanbanProvider"
 import { SelectedIdProvider } from "./context/KanbanContext/SelectedIdContext"
 import { loadKanbanData } from "./utils/storage"
+import { Flip, ToastContainer } from "react-toastify"
 
 function App(): ReactNode {
     const [initialData] = useState(() => {
@@ -22,6 +23,14 @@ function App(): ReactNode {
                     </KanbanProvider>
                 </SelectedIdProvider>
             </main>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                theme="dark"
+                closeOnClick
+                pauseOnHover
+                transition={Flip}
+            />
         </>
     )
 }
