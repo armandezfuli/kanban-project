@@ -3,7 +3,7 @@ import styles from "./Button.module.css"
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode
-    variant?: "primary" | "danger" | "login" | "icon"
+    variant?: "primary" | "danger" | "login" | "icon" | "delete"
     icon?: ReactNode
 }
 
@@ -21,6 +21,7 @@ export function Button({
                 ${variant === "danger" ? styles.danger : ""}
                 ${variant === "login" ? styles.login : ""}
                 ${variant === "icon" ? styles.iconVariant : ""} 
+                ${variant === "delete" ? `${styles.iconVariant} ${styles["icon-delete"]}` : ""} 
                 ${icon && !children ? styles.iconOnly : ""}
       `}>
             {icon && <span className={styles.icon}>{icon}</span>}

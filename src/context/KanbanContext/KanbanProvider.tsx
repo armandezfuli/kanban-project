@@ -12,6 +12,7 @@ interface KanbanProviderProps {
 export type KanbanAction =
     | { type: "DELETE_CARD"; payload: { id: string } }
     | { type: "MOVE_CARD"; payload: { id: string; status: KanbanStatus } }
+    | { type: "ADD_CARD"; payload: { text: string; status: KanbanStatus } }
 
 export function KanbanProvider({ initialData, children }: KanbanProviderProps) {
     const [kanbanData, dispatch] = useReducer(kanbanReducer, initialData)

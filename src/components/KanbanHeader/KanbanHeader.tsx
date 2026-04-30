@@ -1,14 +1,17 @@
 import styles from "./KanbanHeader.module.css"
 import { Button } from "../Button/Button"
-import type { ReactNode } from "react"
+import { useState, type ReactNode } from "react"
 import useKanban from "../../context/KanbanContext/useKanban"
 import { useSelectedId } from "../../context/KanbanContext/SelectedIdContext"
 import { Flip, toast } from "react-toastify"
 import { FiTrash2 } from "react-icons/fi"
+import { BsPlusSquare } from "react-icons/bs"
+import { AddCardForm } from "../AddCardForm/AddCardForm"
 
 export function KanbanHeader(): ReactNode {
     const { kanbanData, dispatch } = useKanban()
     const { selectedId, setSelectedId } = useSelectedId()
+    const [isOpen, setIsOpen] = useState<boolean>(false)
 
     const selectedCard = selectedId
         ? kanbanData.cards.find((card) => card.id === selectedId)
@@ -40,13 +43,11 @@ export function KanbanHeader(): ReactNode {
                     onClick={() => handleMoveCard("todo", "Todo")}>
                     To Do
                 </Button>
-
                 <Button
                     disabled={!selectedId || selectedCard?.status === "doing"}
                     onClick={() => handleMoveCard("doing", "Doing")}>
                     Doing
                 </Button>
-
                 <Button
                     disabled={!selectedId || selectedCard?.status === "done"}
                     onClick={() => handleMoveCard("done", "Done")}>
@@ -54,12 +55,20 @@ export function KanbanHeader(): ReactNode {
                 </Button>
 
                 <Button
-                    variant="icon"
+                    variant="delete"
                     disabled={!selectedId}
                     icon={<FiTrash2 />}
                     onClick={handleDeleteCard}
                 />
+
+                <Button
+                    variant="icon"
+                    className=""
+                    icon={<BsPlusSquare />}
+                    onClick={() => setIsOpen(true)}
+                />
             </div>
+            <AddCardForm isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </header>
     )
 }

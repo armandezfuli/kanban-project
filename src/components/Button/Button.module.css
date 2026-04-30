@@ -43,9 +43,9 @@
 
     @media (max-width: 768px) {
         font-size: var(--font-size-0);
-        padding-inline: var(--size-2); /* ← کمتر */
-        padding-block: var(--size-0); /* ← کمتر */
-        gap: 0.4rem; /* ← کمتر */
+        padding-inline: var(--size-2);
+        padding-block: var(--size-0);
+        gap: 0.4rem;
     }
 }
 
@@ -92,10 +92,10 @@
     border: none;
     background: transparent;
     padding: var(--size-1);
-    color: var(--red-9);
+    color: var(--lime-8);
 
     &:hover {
-        color: var(--red-8);
+        color: var(--lime-6);
         background: transparent;
         border: none;
     }
@@ -136,4 +136,14 @@
 
 .iconOnly .icon {
     margin: 0;
+}
+
+.icon-delete {
+    color: var(--red-9);
+
+    &:hover {
+        color: var(--red-8);
+        background: transparent;
+        border: none;
+    }
 }
