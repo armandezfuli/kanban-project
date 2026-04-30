@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react"
+import { useEffect, useRef, useState, type ReactNode } from "react"
 import styles from "./AddCardForm.module.css"
 import { Button } from "../Button/Button"
 import type { KanbanStatus } from "../../types/kanban"
@@ -11,11 +11,40 @@ interface AddCardFormProps {
 }
 
 export function AddCardForm({ isOpen, onClose }: AddCardFormProps): ReactNode {
-    if (!isOpen) return null
     const [text, setText] = useState("")
     const [status, setStatus] = useState<KanbanStatus>("todo")
     const [error, setError] = useState<string | null>(null)
     const { dispatch } = useKanban()
+    const textareaRef = useRef<HTMLTextAreaElement>(null)
+
+    useEffect(() => {
+        if (isOpen && textareaRef.current) {
+            textareaRef.current.focus()
+        }
+    }, [isOpen])
+
+    useEffect(() => {
+        const handleEscape = (e: KeyboardEvent) => {
+            if (e.key === "Escape" && isOpen) {
+                onClose()
+            }
+        }
+        document.addEventListener("keydown", handleEscape)
+        return () => document.removeEventListener("keydown", handleEscape)
+    }, [isOpen, onClose])
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = ""
+        }
+        return () => {
+            document.body.style.overflow = ""
+        }
+    }, [isOpen])
+
+    if (!isOpen) return null
 
     const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setText(e.target.value)
@@ -68,6 +97,7 @@ export function AddCardForm({ isOpen, onClose }: AddCardFormProps): ReactNode {
                 onClick={(e) => e.stopPropagation()}>
                 <textarea
                     placeholder="Enter task description..."
+                    ref={textareaRef}
                     rows={3}
                     value={text}
                     onChange={handleTextChange}
