@@ -1,31 +1,30 @@
 import styles from "./KanbanBoardCard.module.css"
 import type { KanbanCardModel } from "../../types/kanban"
 import { memo, type ReactNode } from "react"
+import { Button } from "../Button/Button"
+import { FiTrash2 } from "react-icons/fi"
+import clsx from "clsx"
 
 interface KanbanBoardCardProps {
     card: KanbanCardModel
-    onSelectCard: (id: string) => void
-    isSelected: boolean
+    onDelete: (id: string) => void
 }
 
 const KanbanBoardCard = memo(function KanbanBoardCard({
     card,
-    onSelectCard,
-    isSelected,
+    onDelete,
 }: KanbanBoardCardProps): ReactNode {
-    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        e.stopPropagation()
-        onSelectCard(card.id)
-    }
-
     return (
-        <div
-            className={`
-            ${styles.card}
-            ${isSelected ? styles["card-selected"] : ""}
-        `}
-            onClick={handleClick}>
-            {card.text}
+        <div className={clsx(styles.card)}>
+            <span>{card.text}</span>
+            <div className={clsx(styles.deleteButton)}>
+                <Button
+                    variant="delete"
+                    icon={<FiTrash2 />}
+                    onClick={() => onDelete?.(card.id)}
+                    style={{ color: "var(--red-9)", fontSize: "1.2rem" }}
+                />
+            </div>
         </div>
     )
 })

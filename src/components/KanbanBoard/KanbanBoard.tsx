@@ -1,11 +1,12 @@
 import { KanbanBoardCard } from "../KanbanBoardCard/KanbanBoardCard"
 import styles from "./KanbanBoard.module.css"
 import type { KanbanStatus, KanbanCardModel } from "../../types/kanban"
-import { memo, useCallback, type ReactNode } from "react"
-import { useSelectedId } from "../../context/KanbanContext/SelectedIdContext"
+import { memo, type ReactNode } from "react"
+import clsx from "clsx"
 interface KanbanBoardProps {
     status: KanbanStatus
     cards: KanbanCardModel[]
+    onDeleteCard: (id: string) => void
 }
 
 const columnTitleMap: Record<KanbanStatus, string> = {
@@ -17,27 +18,14 @@ const columnTitleMap: Record<KanbanStatus, string> = {
 const KanbanBoard = memo(function KanbanBoard({
     status,
     cards,
+    onDeleteCard,
 }: KanbanBoardProps): ReactNode {
-    const { selectedId, setSelectedId } = useSelectedId()
-
-    const handleSelectCard = useCallback(
-        (id: string) => {
-            setSelectedId((prev) => (prev === id ? undefined : id))
-        },
-        [setSelectedId]
-    )
-
     return (
         <div className={styles.column}>
-            <div className={styles["column-title"]}>{columnTitleMap[status]}</div>
-            <div className={styles.cards}>
+            <div className={clsx(styles["column-title"])}>{columnTitleMap[status]}</div>
+            <div className={clsx(styles.cards)}>
                 {cards.map((card) => (
-                    <KanbanBoardCard
-                        key={card.id}
-                        card={card}
-                        onSelectCard={handleSelectCard}
-                        isSelected={selectedId === card.id}
-                    />
+                    <KanbanBoardCard key={card.id} card={card} onDelete={onDeleteCard} />
                 ))}
             </div>
         </div>

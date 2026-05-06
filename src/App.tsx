@@ -3,7 +3,6 @@ import { Header } from "./components/Header/Header"
 import { Kanban } from "./components/Kanban/Kanban"
 import { data } from "./data/data"
 import { KanbanProvider } from "./context/KanbanContext/KanbanProvider"
-import { SelectedIdProvider } from "./context/KanbanContext/SelectedIdContext"
 import { loadKanbanData } from "./utils/storage"
 import { Flip, ToastContainer } from "react-toastify"
 
@@ -17,11 +16,9 @@ function App(): ReactNode {
         <>
             <Header />
             <main className="layout">
-                <SelectedIdProvider>
-                    <KanbanProvider initialData={initialData}>
-                        <Kanban />
-                    </KanbanProvider>
-                </SelectedIdProvider>
+                <KanbanProvider initialData={initialData}>
+                    <Kanban />
+                </KanbanProvider>
             </main>
             <ToastContainer
                 position="bottom-right"

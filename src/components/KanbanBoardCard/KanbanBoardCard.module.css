@@ -1,11 +1,30 @@
 .card {
+    display: grid;
+    grid-template-columns: 1fr auto; /* متن در left، دکمه در right */
+    align-items: center;
+    gap: var(--size-2);
+
     background: var(--surface-4);
-    padding: var(--size-5);
+    padding-inline: var(--size-4);
+    padding-block: var(--size-3);
     color: var(--gray-0);
     font-size: var(--font-size-2);
     border-radius: var(--radius-2);
+    transition: all 0.2s;
 }
-.card-selected {
-    outline: 2px solid var(--lime-7);
-    outline-offset: 2px;
+
+.card:hover {
+    background: var(--surface-3);
+}
+
+/* دکمه دیگه نیازی به position absolute نداره */
+.deleteButton {
+    opacity: 0;
+    transition: opacity 0.2s;
+    grid-column: 2; /* ستون دوم */
+    justify-self: end; /* چسبیده به راست */
+}
+
+.card:hover .deleteButton {
+    opacity: 1;
 }

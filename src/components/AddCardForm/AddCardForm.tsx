@@ -4,6 +4,7 @@ import { Button } from "../Button/Button"
 import type { KanbanStatus } from "../../types/kanban"
 import useKanban from "../../context/KanbanContext/useKanban"
 import { toast } from "react-toastify"
+import clsx from "clsx"
 
 interface AddCardFormProps {
     isOpen: boolean
@@ -90,9 +91,9 @@ export function AddCardForm({ isOpen, onClose }: AddCardFormProps): ReactNode {
     }
 
     return (
-        <div className={styles.overlay} onClick={onClose}>
+        <div className={clsx(styles.overlay)} onClick={onClose}>
             <form
-                className={styles["add-card-form"]}
+                className={clsx(styles["add-card-form"])}
                 onSubmit={handleSubmit}
                 onClick={(e) => e.stopPropagation()}>
                 <textarea
@@ -102,7 +103,7 @@ export function AddCardForm({ isOpen, onClose }: AddCardFormProps): ReactNode {
                     value={text}
                     onChange={handleTextChange}
                 />
-                <div className={styles["status-select"]}>
+                <div className={clsx(styles["status-select"])}>
                     <label>
                         <input
                             type="radio"
@@ -134,7 +135,7 @@ export function AddCardForm({ isOpen, onClose }: AddCardFormProps): ReactNode {
                         <span>Done</span>
                     </label>
                 </div>
-                {error && <div className={styles.error}>{error}</div>}
+                {error && <div className={clsx(styles.error)}>{error}</div>}
                 <Button type="submit" variant="primary" style={{ paddingBlock: ".6rem" }}>
                     Add Card
                 </Button>

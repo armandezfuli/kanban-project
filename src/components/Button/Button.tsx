@@ -1,5 +1,6 @@
 import { type ReactNode, type ButtonHTMLAttributes } from "react"
 import styles from "./Button.module.css"
+import clsx from "clsx"
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode
@@ -16,16 +17,16 @@ export function Button({
     return (
         <button
             {...rest}
-            className={`
-                ${styles.button}
-                ${variant === "danger" ? styles.danger : ""}
-                ${variant === "login" ? styles.login : ""}
-                ${variant === "icon" ? styles.iconVariant : ""} 
-                ${variant === "delete" ? `${styles.iconVariant} ${styles["icon-delete"]}` : ""} 
-                ${icon && !children ? styles.iconOnly : ""}
-      `}>
-            {icon && <span className={styles.icon}>{icon}</span>}
-            {children && <span className={styles.children}>{children}</span>}
+            className={clsx(
+                styles.button,
+                variant === "danger" && styles.danger,
+                variant === "login" && styles.login,
+                variant === "icon" && styles.iconVariant,
+                variant === "delete" && [styles.iconVariant, styles["icon-delete"]],
+                icon && !children && styles.iconOnly
+            )}>
+            {icon && <span className={clsx(styles.icon)}>{icon}</span>}
+            {children && <span className={clsx(styles.children)}>{children}</span>}
         </button>
     )
 }
