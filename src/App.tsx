@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react"
 import { Header } from "./components/Header/Header"
 import { Kanban } from "./components/Kanban/Kanban"
 import { data } from "./data/data"
-import { KanbanProvider } from "./context/KanbanContext/KanbanProvider"
+import { KanbanProvider } from "./context/KanbanContext/kanbanProvider"
 import { loadKanbanData } from "./utils/storage"
 import { Flip, ToastContainer } from "react-toastify"
 

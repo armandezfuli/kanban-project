@@ -1,10 +1,10 @@
 import styles from "./KanbanHeader.module.css"
 import { Button } from "../Button/Button"
 import { useState, type ReactNode } from "react"
-import useKanban from "../../context/KanbanContext/useKanban"
 import { BsPlusSquare } from "react-icons/bs"
 import { AddCardForm } from "../AddCardForm/AddCardForm"
 import clsx from "clsx"
+import { useKanban } from "../../context/KanbanContext/useKanban"
 
 export function KanbanHeader(): ReactNode {
     const { kanbanData } = useKanban()

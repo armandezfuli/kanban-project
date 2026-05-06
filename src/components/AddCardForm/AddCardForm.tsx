@@ -2,9 +2,9 @@ import { useEffect, useRef, useState, type ReactNode } from "react"
 import styles from "./AddCardForm.module.css"
 import { Button } from "../Button/Button"
 import type { KanbanStatus } from "../../types/kanban"
-import useKanban from "../../context/KanbanContext/useKanban"
 import { toast } from "react-toastify"
 import clsx from "clsx"
+import { useKanban } from "../../context/KanbanContext/useKanban"
 
 interface AddCardFormProps {
     isOpen: boolean
@@ -15,7 +15,7 @@ export function AddCardForm({ isOpen, onClose }: AddCardFormProps): ReactNode {
     const [text, setText] = useState("")
     const [status, setStatus] = useState<KanbanStatus>("todo")
     const [error, setError] = useState<string | null>(null)
-    const { dispatch } = useKanban()
+    const { kanbanDispatch } = useKanban()
     const textareaRef = useRef<HTMLTextAreaElement>(null)
 
     useEffect(() => {
@@ -77,7 +77,7 @@ export function AddCardForm({ isOpen, onClose }: AddCardFormProps): ReactNode {
 
         if (!validateForm()) return
 
-        dispatch({
+        kanbanDispatch({
             type: "ADD_CARD",
             payload: { text: text.trim(), status },
         })

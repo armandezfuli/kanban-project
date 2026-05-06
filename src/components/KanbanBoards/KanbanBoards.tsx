@@ -1,15 +1,15 @@
 import { KanbanBoard } from "../KanbanBoard/KanbanBoard"
 import styles from "./KanbanBoards.module.css"
 import { useMemo, type ReactNode } from "react"
-import useKanban from "../../context/KanbanContext/useKanban"
 import { toast } from "react-toastify"
 import clsx from "clsx"
+import { useKanban } from "../../context/KanbanContext/useKanban"
 
 export function KanbanBoards(): ReactNode {
-    const { kanbanData, dispatch } = useKanban()
+    const { kanbanData, kanbanDispatch} = useKanban()
 
     const handleDeleteCard = (id: string) => {
-        dispatch({ type: "DELETE_CARD", payload: { id } })
+        kanbanDispatch({ type: "DELETE_CARD", payload: { id } })
         toast.success("Card deleted successfully")
     }
 
